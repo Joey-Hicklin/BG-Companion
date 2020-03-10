@@ -6,7 +6,7 @@ public class Item : MonoBehaviour
 {
 	// VARIABLES
 
-	private string name;
+	private string title;
 	private int health;
 	private int equipmentCost;
 	private string itemType;
@@ -17,9 +17,9 @@ public class Item : MonoBehaviour
 		set { this.health = value; }
 	}
 
-	public string Name
+	public string Title
 	{
-		get { return this.name; }
+		get { return this.title; }
 	}
 
 	public int EquipmentCost
@@ -34,9 +34,9 @@ public class Item : MonoBehaviour
 
 	// CONSTRUCTOR
 
-	public Item(string name, int health, int equipmentCost, string itemType)
+	public Item(string title, int health, int equipmentCost, string itemType)
 	{
-		this.name = name;
+		this.title = title;
 		this.health = health;
 		this.equipmentCost = equipmentCost;
 		this.itemType = itemType;
