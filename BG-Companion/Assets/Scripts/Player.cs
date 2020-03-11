@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     // VARIABLES
 
+    private int ID;
+    // TODO Combine device ID and datetime of character creation to generate unique ID
     private string title;
     private Item[] items;
     private int maxStamina;
