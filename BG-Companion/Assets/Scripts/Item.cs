@@ -10,6 +10,7 @@ public class Item : MonoBehaviour
 	private int health;
 	private int equipmentCost;
 	private string itemType;
+	private List<Ability> ability;
 
 	public int Health
 	{
@@ -32,14 +33,21 @@ public class Item : MonoBehaviour
 		get { return this.itemType; }
 	}
 
+	public List<Ability> Ability
+	{
+		get { return ability; }
+		set { this.ability = value; }
+	}
+
 	// CONSTRUCTOR
 
-	public Item(string title, int health, int equipmentCost, string itemType)
+	public Item(string title, int health, int equipmentCost, string itemType, List<Ability> ability)
 	{
 		this.title = title;
 		this.health = health;
 		this.equipmentCost = equipmentCost;
 		this.itemType = itemType;
+		this.ability = ability;
 	}
 
 	// HEALTH METHODS

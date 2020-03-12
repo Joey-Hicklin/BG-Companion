@@ -7,6 +7,8 @@ public class Ability : MonoBehaviour
     // VARIABLES
 
     private string title;
+    private string location;
+    private List<string> activity;
     private bool attack;
     private bool focus;
     private bool movement;
@@ -15,13 +17,22 @@ public class Ability : MonoBehaviour
     private bool shield;
     private int markerNum;
     private int markerGainNum;
-    private int num;
+    private int effectNum;
     private int maxNum;
-    private int damage;
 
     public string Title
     {
         get { return title; }
+    }
+
+    public string Location
+    {
+        get { return location; }
+    }
+
+    public List<string> Activity
+    {
+        get { return activity; }
     }
 
     public bool Attack
@@ -66,10 +77,10 @@ public class Ability : MonoBehaviour
         set { markerGainNum = value; }
     }
 
-    public int Num
+    public int EffectNum
     {
-        get { return num; }
-        set { num = value; }
+        get { return effectNum; }
+        set { effectNum = value; }
     }
 
     public int MaxNum
@@ -78,51 +89,29 @@ public class Ability : MonoBehaviour
         set { maxNum = value; }
     }
 
-    public int Damage
-    {
-        get { return damage; }
-        set { damage = value; }
-    }
-
     // CONSTRUCTOR
 
-    public Ability(string title, string activity, int num = 0, int maxNum = 0, int markerNum = 0, int markerGainNum = 0, int damage = 0)
+    public Ability(string title, string location, List<string> activity, int effectNum = 0, int maxNum = 0, int markerNum = 0, int markerGainNum = 0)
     {
         this.title = title;
-        this.attack = false;
-        this.focus = false;
-        this.movement = false;
-        this.trap = false;
-        this.heal = false;
-        this.shield = false;
+        this.location = location;
+        this.activity = activity;
         this.markerNum = markerNum;
         this.markerGainNum = markerGainNum;
-        this.num = num;
+        this.effectNum = effectNum;
         this.maxNum = maxNum;
-        this.damage = damage;
 
-        switch (activity)
-        {
-            case "attack":
-                this.attack = true;
-                break;
-            case "focus":
-                this.focus = true;
-                break;
-            case "movement":
-                this.movement = true;
-                break;
-            case "trap":
-                this.trap = true;
-                break;
-            case "heal":
-                this.heal = true;
-                break;
-            case "shield":
-                this.shield = true;
-                break;
-            default:
-                break;
-        }
+        if (activity.Contains("attack")) { this.attack = true; }
+        else this.attack = false;
+        if (activity.Contains("focus")) { this.focus = true; }
+        else this.focus = false;
+        if (activity.Contains("movement")) { this.movement = true; }
+        else this.movement = false;
+        if (activity.Contains("trap")) { this.trap = true; }
+        else this.trap = false;
+        if (activity.Contains("heal")) { this.heal = true; }
+        else this.heal = false;
+        if (activity.Contains("shield")) { this.shield = true; }
+        else this.shield = false;
     }
 }
