@@ -9,6 +9,8 @@ namespace Mirror.Discovery
     [RequireComponent(typeof(NetworkDiscovery))]
     public class NetworkDiscoveryHUD : MonoBehaviour
     {
+        GUIStyle mainStyle = new GUIStyle();
+
         readonly Dictionary<long, ServerResponse> discoveredServers = new Dictionary<long, ServerResponse>();
         Vector2 scrollViewPos = Vector2.zero;
 
@@ -42,14 +44,18 @@ namespace Mirror.Discovery
         {
             GUILayout.BeginHorizontal();
 
-            if (GUILayout.Button("Find Servers"))
+            mainStyle.fontSize = 24;
+            mainStyle.fixedHeight = 500;
+            mainStyle.fixedWidth = 500;
+
+            if ((GUILayout.Button("Find Servers", GUILayout.Width(200), GUILayout.Height(100))))
             {
                 discoveredServers.Clear();
                 networkDiscovery.StartDiscovery();
             }
 
             // LAN Host
-            if (GUILayout.Button("Start Host"))
+            if (GUILayout.Button("Start Host", GUILayout.Width(200), GUILayout.Height(100)))
             {
                 discoveredServers.Clear();
                 NetworkManager.singleton.StartHost();
@@ -57,19 +63,19 @@ namespace Mirror.Discovery
             }
 
             // Dedicated server
-            if (GUILayout.Button("Start Server"))
+            /*if (GUILayout.Button("Start Server"))
             {
                 discoveredServers.Clear();
                 NetworkManager.singleton.StartServer();
 
                 networkDiscovery.AdvertiseServer();
-            }
+            }*/
 
             GUILayout.EndHorizontal();
 
             // show list of found server
 
-            GUILayout.Label($"Discovered Servers [{discoveredServers.Count}]:");
+            GUILayout.Label($"Discovered Servers [{discoveredServers.Count}]:", GUILayout.Width(200), GUILayout.Height(100));
 
             // servers
             scrollViewPos = GUILayout.BeginScrollView(scrollViewPos);
